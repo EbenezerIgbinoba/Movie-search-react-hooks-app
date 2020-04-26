@@ -4,10 +4,13 @@ import Header from "./Components/AppHeader";
 import Movie from "./Components/Movie";
 import Search from "./Components/SearchMovie";
 
-
+// const [loading, setLoading] = useState(true);
+// const [movies, setMovies] = useState([]);
+// const [errorMessage, setErrorMessage] = useState(null);
 
 
 const MOVIE_API_URL = "https://www.omdbapi.com/?s=man&apikey=4a3b711b";
+
 
 
 const initialState = {
