@@ -5,7 +5,7 @@ import Movie from "./Components/Movie";
 import Search from "./Components/SearchMovie";
 
 
-const MOVIE_API_URL = "https://www.omdbapi.com/?s=man&apikey=4a3b711b"; // you should replace this with yours
+const MOVIE_API_URL = "https://www.omdbapi.com/?s=man&apikey=4a3b711b"; 
 
 
 const App = () => {
@@ -32,6 +32,7 @@ const App = () => {
     fetch(`https://www.omdbapi.com/?s=${searchValue}&apikey=fd4c8636`)
       .then(response => response.json())
       .then(jsonResponse => {
+        console.log(jsonResponse);
         if (jsonResponse.Response === "True") {
           setMovies(jsonResponse.Search);
           setLoading(false);
