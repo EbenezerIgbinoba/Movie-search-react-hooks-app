@@ -10,13 +10,15 @@ import Search from "./Components/SearchMovie";
 
 
 const MOVIE_API_URL = "https://www.omdbapi.com/?s=man&apikey=4a3b711b";
+const IMDB_API = "https://imdb8.p.rapidapi.com/title/get-top-stripe?currentCountry=US&purchaseCountry=US&tconst=tt0944947";
 
 
 
 const initialState = {
   loading: true,
   movies: [],
-  errorMessage: null
+  errorMessage: null,
+  imdb_movies: []
 };
 
 
@@ -34,6 +36,12 @@ const reducer = (state, action) => {
         loading: false,
         movies: action.payload
       };
+    case "IMDB_API_SUCCESS":
+      return {
+        ...state,
+        loading: true,
+        imdb_movies: action.payload
+      }
     case "SEARCH_MOVIES_FAILURE":
       return {
         ...state,
@@ -60,7 +68,8 @@ const App = () => {
                 type: "SEARCH_MOVIES_SUCCESS",
                 payload: jsonResponse.Search
         	});
-      	});
+        });
+       
   	}, []);
 
     const search = searchValue => {
@@ -82,10 +91,14 @@ const App = () => {
                 error: jsonResponse.Error
           	});
           }
-      	});
+        });
+        
+        
 	  };
 
-    const { movies, errorMessage, loading } = state;
+    const { movies, errorMessage, loading, imdb_movies } = state;
+
+    console.log(imdb_movies);
 
     return (
     <div className="App">
