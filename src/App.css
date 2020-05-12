@@ -32,8 +32,9 @@
 
 .movies {
   display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
+  flex-flow: row wrap;
+  width: 100%;
+  justify-content: center;
 }
 
 .App-header h2 {
