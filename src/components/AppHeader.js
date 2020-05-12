@@ -4,17 +4,29 @@ import Logo from '../assets/img/logo-YTS.svg';
 const Header = (props) => {
   return (
     <header class="main_header">
-       <div className="App-header">
-        <div className="logo">
-          <div>
-            <img src="https://yts.mx/assets/images/website/logo-YTS.svg"  width="130"/>
+      <div class="nav">
+        <div class="nav-header">
+          <div class="nav-title">
+           <img src="https://yts.mx/assets/images/website/logo-YTS.svg"  width="140px"/>
           </div>
         </div>
-        <div className="menu_items">
-            <ul className="nav_menu">
-              <li className="nav_menu_item"><a href="#">Home</a> </li>
-              <li className="nav_menu_item"><a href="#">About</a> </li>
-            </ul>
+        <div class="nav-btn">
+          <label for="nav-check">
+            <span></span>
+            <span></span>
+            <span></span>
+          </label>
+        </div>
+        
+        <div class="nav-links">
+          <div className="search_wrapper">
+            <div className="search_icon">
+
+            </div>
+            <div className="search_inp">
+              <input type="search" />
+            </div>
+          </div>
         </div>
       </div>
     </header>
@@ -23,3 +35,6 @@ const Header = (props) => {
 };
 
 export default Header;
+
+
+
