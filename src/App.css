@@ -22,8 +22,17 @@ p {
   width: 10%;
 }
 .menu_items {
-  width: 30%;
+  width: 45%;
   display: flex;
+  align-items: center;
+}
+.menu_item {
+  /* width: 2%; */
+}
+.menu_item h2 {
+  color:#919191 ;
+  font-size: .85em;
+  margin-left: 15px;
 }
 .search_wrapper {
   display: flex;
@@ -41,6 +50,7 @@ input[type="search"] {
   background: transparent;
   padding: 10px;
   color: #919191;
+  width: 250px;
 }
 .search_wrapper ::placeholder {
   color: #919191;

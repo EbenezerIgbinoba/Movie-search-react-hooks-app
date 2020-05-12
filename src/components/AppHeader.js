@@ -16,7 +16,19 @@ const Header = (props) => {
           </div>
           <div className="search_input">
               <input type="search" placeholder="Quick Search" />
-            </div>
+          </div>
+        </div>
+        <div className="menu_item">
+          <h2 className="">Home</h2 >
+        </div>
+        <div className="menu_item">
+          <h2 className="" style={{color: '#6AC045'}}>4K</h2>
+        </div>
+        <div className="menu_item">
+          <h2 className="">Browse Movies</h2>
+        </div>
+        <div className="menu_item">
+          <h2 className="" style={{color: 'white'}}>Login | Register</h2>
         </div>
       </div>
     </header>
