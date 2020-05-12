@@ -103,8 +103,11 @@ const App = () => {
     return (
     <div className="App">
       <Header text="HOOKED" />
-      <Search search={search} />
-      <p className="App-intro">Sharing a few of our favourite movies</p>
+      {/* <Search search={search} /> */}
+      <p className="App-intro">Download YTS YIFY movies: HD smallest size</p>
+      <p className="" style={{color:"#ccc",fonSize: '.95em'}}>
+       Welcome to the official YTS.MX (.LT) website. Here you can browse and download YIFY movies in  <br />excellent 720p, 1080p, 2160p 4K and 3D quality, all at the smallest file size. YTS Movies Torrents.
+      </p>
       <div className="movies">
         {loading && !errorMessage ? (
           <span>loading... </span>

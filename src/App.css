@@ -62,7 +62,10 @@ input[type="search"] {
 }
 
 .App-intro {
-  font-size: large;
+  font-size: 2.75em;
+  font-weight: 700;
+  color: white;
+  text-align: center;
 }
 
 /* new css for movie component */
