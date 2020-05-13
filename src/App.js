@@ -1,9 +1,7 @@
 import React, { useState, useEffect, useReducer } from "react";
 import "./App.css";
-import Header from "./Components/AppHeader";
 import Movie from "./Components/Movie";
-import Search from "./Components/SearchMovie";
-
+import Layout from "./Components/Layout";
 // const [loading, setLoading] = useState(true);
 // const [movies, setMovies] = useState([]);
 // const [errorMessage, setErrorMessage] = useState(null);
@@ -98,27 +96,27 @@ const App = () => {
 
     const { movies, errorMessage, loading, imdb_movies } = state;
 
-    console.log(imdb_movies);
 
     return (
-    <div className="App">
-      <Header text="HOOKED" />
-      {/* <Search search={search} /> */}
-      <p className="App-intro">Download YTS YIFY movies: HD smallest size</p>
-      <p className="" style={{color:"#ccc",fonSize: '.95em'}}>
-       Welcome to the official YTS.MX (.LT) website. Here you can browse and download YIFY movies in  <br />excellent 720p, 1080p, 2160p 4K and 3D quality, all at the smallest file size. YTS Movies Torrents.
-      </p>
-      <div className="movies">
-        {loading && !errorMessage ? (
-          <span>loading... </span>
-        ) : errorMessage ? (
-          <div className="errorMessage">{errorMessage}</div>
-        ) : (
-          movies.map((movie, index) => (
-            <Movie key={`${index}-${movie.Title}`} movie={movie} />
-          ))
-        )}
-      </div>
+      <div className="App">
+        <Layout>
+          <p className="App-intro">Download YTS YIFY movies: HD smallest size</p>
+          <p className="" style={{color:"#ccc",fonSize: '.95em'}}>
+          Welcome to the official YTS.MX (.LT) website. Here you can browse and download YIFY movies in  <br />excellent 720p, 1080p, 2160p 4K and 3D quality, all at the smallest file size. YTS Movies Torrents.
+          </p>
+          <div className="movies">
+            {loading && !errorMessage ? (
+              <span>loading... </span>
+            ) : errorMessage ? (
+              <div className="errorMessage">{errorMessage}</div>
+            ) : (
+              movies.map((movie, index) => (
+                <Movie key={`${index}-${movie.Title}`} movie={movie} />
+              ))
+            )}
+          </div>
+      </Layout>
+     
     </div>
   );
 };
