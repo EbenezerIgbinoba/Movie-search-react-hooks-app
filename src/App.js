@@ -100,21 +100,32 @@ const App = () => {
     return (
       <div className="App">
         <Layout>
-          <p className="App-intro">Download YTS YIFY movies: HD smallest size</p>
-          <p className="" style={{color:"#ccc",fonSize: '.95em'}}>
-          Welcome to the official YTS.MX (.LT) website. Here you can browse and download YIFY movies in  <br />excellent 720p, 1080p, 2160p 4K and 3D quality, all at the smallest file size. YTS Movies Torrents.
-          </p>
-          <div className="movies">
-            {loading && !errorMessage ? (
-              <span>loading... </span>
-            ) : errorMessage ? (
-              <div className="errorMessage">{errorMessage}</div>
-            ) : (
-              movies.map((movie, index) => (
-                <Movie key={`${index}-${movie.Title}`} movie={movie} />
-              ))
-            )}
+          <div style={{
+             backgroundImage: `linear-gradient(rgb(0, 0, 0 , 0.66), rgb(0, 0, 0 , 0.66)), url('https://img.yts.mx/assets/images/movies/onward_2020/background.jpg')`,
+             backgroundPosition: 'center',
+             backgroundRepeat: 'no-repeat',
+             backgroundSize: 'cover'
+          }}>
+            <p className="App-intro">Download YTS YIFY movies: HD smallest size</p>
+            <p className="" style={{color:"#ccc",fonSize: '.95em'}}>
+            Welcome to the official YTS.MX (.LT) website. Here you can browse and download YIFY movies in  <br />excellent 720p, 1080p, 2160p 4K and 3D quality, all at the smallest file size. YTS Movies Torrents.
+            </p>
+            <p style={{color: '#428bca'}}>IMPORTANT - YTS.MX is the only new official domain for YIFY Movies</p>
+            <p style={{fontWeight: '700', marginTop: '20px'}}><i class="fa fa-star" aria-hidden="true" style={{color: '#6AC045', marginRight: '10px', fontSize:'1.15em'}}></i> Popular Downloads </p>
+            <div className="divider"></div>
+            <div className="movies">
+              {loading && !errorMessage ? (
+                <span>loading... </span>
+              ) : errorMessage ? (
+                <div className="errorMessage">{errorMessage}</div>
+              ) : (
+                movies.map((movie, index) => (
+                  <Movie key={`${index}-${movie.Title}`} movie={movie} />
+                ))
+              )}
+            </div>
           </div>
+          
       </Layout>
      
     </div>

@@ -17,8 +17,10 @@ const Movie = ({ movie }) => {
           src={poster}
         />
       </div>
-      <h2>{movie.Title}</h2>
-      <p style={{color: "grey"}}>({movie.Year})</p>
+      <h5>{movie.Title} <br />
+        <span style={{color: "grey", fontSize: '16px', textAlign:'left'}}>({movie.Year})</span>
+      </h5>
+      
     </div>
   );
 };

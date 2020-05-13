@@ -10,6 +10,13 @@ h2,h1,h3,h4,h5,h6 {
 p {
   color: white;
 }
+.divider {
+  width: 85%;
+  margin: 0 auto;
+  height: 1px;
+  margin-top: 40px;
+  background:rgba(255,255,255,.2);
+}
 /* HEADER */
 .main_header {
   background-color: #1d1d1d;
@@ -35,7 +42,7 @@ p {
   align-items: center;
 }
 .menu_item {
-  margin-left: 17px;
+  margin-left: 14px;
 }
 
 .menu_item h2 {
@@ -75,7 +82,7 @@ input[type="search"] {
   font-weight: 700;
   color: white;
   text-align: center;
-  margin-top: 114px;
+  padding-top: 80px
 }
 
 /* new css for movie component */
@@ -89,7 +96,7 @@ input[type="search"] {
   flex-flow: row wrap;
   width: 100%;
   justify-content: center;
-  margin-top: 90px;
+  margin-top: 40px;
 }
 
 
