@@ -16,7 +16,8 @@ const initialState = {
   loading: true,
   movies: [],
   errorMessage: null,
-  imdb_movies: []
+  imdb_movies: [],
+  filteredMovies: []
 };
 
 
@@ -32,14 +33,9 @@ const reducer = (state, action) => {
       return {
         ...state,
         loading: false,
-        movies: action.payload
+        movies: action.payload,
+        filteredMovies: action.payload
       };
-    case "IMDB_API_SUCCESS":
-      return {
-        ...state,
-        loading: true,
-        imdb_movies: action.payload
-      }
     case "SEARCH_MOVIES_FAILURE":
       return {
         ...state,
@@ -94,14 +90,36 @@ const App = () => {
         
 	  };
 
-    const { movies, errorMessage, loading, imdb_movies } = state;
+    const { movies, errorMessage, loading, filteredMovies } = state;
+
+    
+    const filterMovies = (filtertext) => {
+      const {movies} = state;
+      if(filtertext.length > 0) {
+        alert("something");
+        const copiedMovies = [...movies];
+        const mvs = copiedMovies.filter((mv) => mv.Title.toLowerCase().includes(filtertext.toLowerCase()))
+        dispatch({
+          type: "SEARCH_MOVIES_SUCCESS",
+          payload: mvs
+        });
+        console.log(filtertext);
+      }else {
+        console.log(movies);
+        alert("nothing");
+        dispatch({
+          type: "SEARCH_MOVIES_SUCCESS",
+          payload: movies
+        });
+      }
+    }
 
 
     return (
       <div className="App">
-        <Layout>
+        <Layout filtertext={(filtertext) => filterMovies(filtertext)}>
           <div style={{
-             backgroundImage: `linear-gradient(rgb(0, 0, 0 , 0.66), rgb(0, 0, 0 , 0.66)), url('https://img.yts.mx/assets/images/movies/onward_2020/background.jpg')`,
+             backgroundImage: `linear-gradient(rgb(0, 0, 0 , 0.86), rgb(0, 0, 0 , 0.86)), url('https://img.yts.mx/assets/images/movies/onward_2020/background.jpg')`,
              backgroundPosition: 'center',
              backgroundRepeat: 'no-repeat',
              backgroundSize: 'cover'
@@ -111,7 +129,7 @@ const App = () => {
             Welcome to the official YTS.MX (.LT) website. Here you can browse and download YIFY movies in  <br />excellent 720p, 1080p, 2160p 4K and 3D quality, all at the smallest file size. YTS Movies Torrents.
             </p>
             <p style={{color: '#428bca'}}>IMPORTANT - YTS.MX is the only new official domain for YIFY Movies</p>
-            <p style={{fontWeight: '700', marginTop: '20px'}}><i class="fa fa-star" aria-hidden="true" style={{color: '#6AC045', marginRight: '10px', fontSize:'1.15em'}}></i> Popular Downloads </p>
+            <p style={{fontWeight: '700', marginTop: '20px'}}><i className="fa fa-star" aria-hidden="true" style={{color: '#6AC045', marginRight: '10px', fontSize:'1.15em'}}></i> Popular Downloads </p>
             <div className="divider"></div>
             <div className="movies">
               {loading && !errorMessage ? (
@@ -119,7 +137,7 @@ const App = () => {
               ) : errorMessage ? (
                 <div className="errorMessage">{errorMessage}</div>
               ) : (
-                movies.map((movie, index) => (
+                filteredMovies.map((movie, index) => (
                   <Movie key={`${index}-${movie.Title}`} movie={movie} />
                 ))
               )}

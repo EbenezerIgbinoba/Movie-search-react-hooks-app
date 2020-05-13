@@ -12,10 +12,10 @@ const Header = (props) => {
         <div className="menu_items">
           <div className="search_wrapper">
             <div className="search_icon_wrapper">
-            <i class="fa fa-search search_icon" aria-hidden="true"></i>
+            <i className="fa fa-search search_icon" aria-hidden="true"></i>
             </div>
             <div className="search_input">
-                <input type="search" placeholder="Quick Search" />
+                <input type="search" placeholder="Quick Search" onChange={props.inputChange } />
             </div>
           </div>
           <div className="menu_item">

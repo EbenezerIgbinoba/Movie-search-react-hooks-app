@@ -26,6 +26,7 @@ p {
   justify-content: space-between;
   margin: 0 auto;
   width: 90%;
+  border-bottom: 1px solid rgba(255,255,255,.2);
 }
 .nav {
   background-color: #1d1d1d;
@@ -33,6 +34,7 @@ p {
   position: fixed;
   top: 0;
   width: 100%;
+  border-bottom: 1px solid rgba(255,255,255,.2);
 }
 .logo_wrapper {
   width: 10%;
@@ -76,6 +78,17 @@ input[type="search"] {
   height: 80px;
   margin: auto;
 }
+/* HEADER END */
+
+
+/* FOOTER */
+.footer_wrapper {
+  background: #171717;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-top: 1px solid #2f2f2f;
+  height: 70px;
+}
 
 .App-intro {
   font-size: 2.75em;
@@ -96,7 +109,7 @@ input[type="search"] {
   flex-flow: row wrap;
   width: 100%;
   justify-content: center;
-  margin-top: 40px;
+  margin-top: 30px;
 }
 
 
@@ -183,5 +196,9 @@ input[type="submit"]:hover {
   .movie {
     max-width: 100%;
     margin: auto;
+  }
+  .App-intro {
+    font-size: 20px;
+    font-weight: 600;
   }
 }
