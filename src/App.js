@@ -2,9 +2,7 @@ import React, { useState, useEffect, useReducer } from "react";
 import "./App.css";
 import Movie from "./Components/Movie";
 import Layout from "./Components/Layout";
-// const [loading, setLoading] = useState(true);
-// const [movies, setMovies] = useState([]);
-// const [errorMessage, setErrorMessage] = useState(null);
+
 
 
 const MOVIE_API_URL = "https://www.omdbapi.com/?s=man&apikey=4a3b711b";
@@ -17,7 +15,6 @@ const initialState = {
   movies: [],
   errorMessage: null,
   imdb_movies: [],
-  filteredMovies: []
 };
 
 
@@ -34,8 +31,14 @@ const reducer = (state, action) => {
         ...state,
         loading: false,
         movies: action.payload,
-        filteredMovies: action.payload
+        filter: false
       };
+    case "Filtered Movies":
+        return {
+          ...state,
+          movies: action.payload,
+          filter: true
+        }
     case "SEARCH_MOVIES_FAILURE":
       return {
         ...state,
@@ -49,11 +52,19 @@ const reducer = (state, action) => {
 
 
 
+
+
 const App = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const [filterText, setFilterText] = useState("");
+
+  const filterMovies = (filtertext) => {
+    setFilterText(filtertext);
+  }
+
+   
 
     useEffect(() => {
-    
         fetch(MOVIE_API_URL)
             .then(response => response.json())
             .then(jsonResponse => {
@@ -90,29 +101,9 @@ const App = () => {
         
 	  };
 
-    const { movies, errorMessage, loading, filteredMovies } = state;
+    const { movies, errorMessage, loading } = state;
 
-    
-    const filterMovies = (filtertext) => {
-      const {movies} = state;
-      if(filtertext.length > 0) {
-        alert("something");
-        const copiedMovies = [...movies];
-        const mvs = copiedMovies.filter((mv) => mv.Title.toLowerCase().includes(filtertext.toLowerCase()))
-        dispatch({
-          type: "SEARCH_MOVIES_SUCCESS",
-          payload: mvs
-        });
-        console.log(filtertext);
-      }else {
-        console.log(movies);
-        alert("nothing");
-        dispatch({
-          type: "SEARCH_MOVIES_SUCCESS",
-          payload: movies
-        });
-      }
-    }
+    const filteredList = movies.filter((mv) => mv.Title.toLowerCase().includes(filterText.toLowerCase()));
 
 
     return (
@@ -137,7 +128,7 @@ const App = () => {
               ) : errorMessage ? (
                 <div className="errorMessage">{errorMessage}</div>
               ) : (
-                filteredMovies.map((movie, index) => (
+                filteredList.map((movie, index) => (
                   <Movie key={`${index}-${movie.Title}`} movie={movie} />
                 ))
               )}
