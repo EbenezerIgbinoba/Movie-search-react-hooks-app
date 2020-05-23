@@ -31,14 +31,7 @@ const reducer = (state, action) => {
         ...state,
         loading: false,
         movies: action.payload,
-        filter: false
       };
-    case "Filtered Movies":
-        return {
-          ...state,
-          movies: action.payload,
-          filter: true
-        }
     case "SEARCH_MOVIES_FAILURE":
       return {
         ...state,
@@ -61,8 +54,6 @@ const App = () => {
   const filterMovies = (filtertext) => {
     setFilterText(filtertext);
   }
-
-   
 
     useEffect(() => {
         fetch(MOVIE_API_URL)
