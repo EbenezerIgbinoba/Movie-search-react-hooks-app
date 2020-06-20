@@ -45,14 +45,11 @@ const reducer = (state, action) => {
 
 
 
-const Movies = () => {
-  const [state, dispatch] = useReducer(reducer, initialState);
-  const [filterText, setFilterText] = useState("");
+const Movies = (props) => {
+    const [state, dispatch] = useReducer(reducer, initialState);
+    const [filterText, setFilterText] = useState("");
 
-  const filterMovies = (filtertext) => {
-    setFilterText(filtertext);
-  }
-
+    
     useEffect(() => {
         fetch(MOVIE_API_URL)
             .then(response => response.json())
@@ -61,10 +58,11 @@ const Movies = () => {
             dispatch({
                 type: "SEARCH_MOVIES_SUCCESS",
                 payload: jsonResponse.Search
-        	});
+            });
         });
-       
-  	}, []);
+        console.log(props.text);
+        setFilterText(props.text);
+    }, []);
 
     const search = searchValue => {
     	dispatch({
@@ -100,7 +98,7 @@ const Movies = () => {
             {loading && !errorMessage ? (
             <span>loading... </span>
             ) : errorMessage ? (
-            <div className="errorMessage">{errorMessage}</div>
+                <div className="errorMessage">{errorMessage}</div>
             ) : (
             filteredList.map((movie, index) => (
                 <Movie key={`${index}-${movie.Title}`} movie={movie} />

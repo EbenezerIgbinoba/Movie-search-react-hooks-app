@@ -6,6 +6,7 @@ class Layout extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            
         }
     }
 
@@ -15,12 +16,6 @@ class Layout extends React.Component {
     }
 
     render() {
-        const updateChildrenWithProps = React.Children.map(this.props.children, (child, i) => {
-              return React.cloneElement(child, {
-                fil: this.filterText
-              });
-            }
-          );
         return (
             <div>
                 <Header inputChange={(event) => this.searchEvent(event)} />

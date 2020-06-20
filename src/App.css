@@ -110,11 +110,13 @@ input[type="search"] {
 .movies {
   display: flex;
   flex-flow: row wrap;
-  width: 100%;
+  width: 80%;
   justify-content: center;
+  margin:0 auto;
+}
+.movie {
   margin-top: 30px;
 }
-
 
 .App-header h2 {
   margin: 0;
@@ -134,7 +136,7 @@ input[type="search"] {
 .movie img {
   max-height: 290px;
   width: 100%;
-
+  
 }
 .movie_wrapper {
   border: 1px solid white;
@@ -143,6 +145,11 @@ input[type="search"] {
   height: 300px;
   width: 73%;
   margin: 0 auto;
+}
+.movie__title_tag {
+  width: 73%;
+  margin: 0 auto;
+  margin-top: 10px;
 }
 .errorMessage {
   margin: auto;
