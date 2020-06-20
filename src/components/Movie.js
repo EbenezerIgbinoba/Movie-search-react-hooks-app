@@ -23,7 +23,11 @@ const Movie = ({ movie }) => {
             src={poster}
           />
           <div className="movie__overlay_content">
-          
+              <h3 style={{textAlign: 'center'}}>6.5/10</h3>
+              <h3 style={{textAlign: 'center'}}>6.5/10</h3>
+              <div style={{textAlign: 'center'}}>
+                <button>View Details</button>
+              </div>
           </div>
         </div>
         <h5 className="movie__title_tag">{movie.Title} <br />
