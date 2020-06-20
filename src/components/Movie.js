@@ -22,9 +22,9 @@ const Movie = ({ movie }) => {
             alt={`The movie titled: ${movie.Title}`}
             src={poster}
           />
-        </div>
-        <div className="movie__overlay_content">
+          <div className="movie__overlay_content">
           
+          </div>
         </div>
         <h5 className="movie__title_tag">{movie.Title} <br />
           <span style={{color: "grey", fontSize: '16px', textAlign:'left'}}>({movie.Year})</span>
