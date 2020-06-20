@@ -1,6 +1,9 @@
 .App {
   text-align: center;
 }
+.banner__section {
+  text-align: center;
+}
 body {
   background: black;
 }
