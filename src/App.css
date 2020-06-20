@@ -138,13 +138,34 @@ input[type="search"] {
   width: 100%;
   
 }
-.movie_wrapper {
-  border: 1px solid white;
+.movie_wrapper_overlay {
+  border: 3px solid #6ac045 !important;
   border-radius: 10px;
   border-width: 3px;
   height: 300px;
   width: 73%;
   margin: 0 auto;
+  cursor: pointer;
+  position: relative;
+}
+.movie__overlay_content{
+  position: absolute;
+  top:50px;
+  left:3px;
+  width:73%;
+  height:294px;
+  background: black;
+  opacity: 0.5;
+  /* display: none; */
+}
+.movie_wrapper {
+  border: 3px solid white;
+  border-radius: 10px;
+  border-width: 3px;
+  height: 300px;
+  width: 73%;
+  margin: 0 auto;
+  position: relative;
 }
 .movie__title_tag {
   width: 73%;
