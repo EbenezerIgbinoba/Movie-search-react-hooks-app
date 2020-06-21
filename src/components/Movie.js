@@ -8,14 +8,14 @@ const DEFAULT_PLACEHOLDER_IMAGE =
   "https://m.media-amazon.com/images/M/MV5BMTczNTI2ODUwOF5BMl5BanBnXkFtZTcwMTU0NTIzMw@@._V1_SX300.jpg";
 
 
-const Movie = ({ movie, key }) => {
+const Movie = ({ movie, movieId }) => {
   const [onHover , setHoverState] = useState({});
   let classList = 'movie_wrapper';
   classList = onHover.state ? 'movie_wrapper_overlay' : 'movie_wrapper';
   const poster = movie.Poster === "N/A" ? DEFAULT_PLACEHOLDER_IMAGE : movie.Poster;
     return (
       <div className="movie" >
-        <div className="movie_wrapper" onMouseEnter={() => setHoverState({state: true, key: key})} onMouseLeave={() => setHoverState({state: false, key: key})}>
+        <div className={`movie_wrapper ${onHover.state ? 'overlay_border overlay_linear_gradient' : null}`} onMouseEnter={() => setHoverState({state: true, movieId: movieId})} onMouseLeave={() => setHoverState({state: false, movieId: movieId})}>
           <img
             width="200"
             alt={`The movie titled: ${movie.Title}`}
