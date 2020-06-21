@@ -9,6 +9,7 @@ const DEFAULT_PLACEHOLDER_IMAGE =
 
 
 const Movie = ({ movie, movieId }) => {
+  console.log(movie);
   const [onHover , setHoverState] = useState({});
   let classList = 'movie_wrapper';
   classList = onHover.state ? 'movie_wrapper_overlay' : 'movie_wrapper';
@@ -24,9 +25,10 @@ const Movie = ({ movie, movieId }) => {
          {onHover.state ? 
           (
             <div className="movie__overlay_content">
-              <div><i className="fa fa-star" aria-hidden="true" style={{color: '#6AC045', marginRight: '10px', fontSize:'1.15em'}}></i> </div>
               <div>
-                <h2>6.5/10</h2>
+                <p style={{textAlign: 'center'}}> <i className="fa fa-star" aria-hidden="true" style={{color: '#6AC045', marginRight: '10px', fontSize:'1.15em'}}></i></p>
+                <h2 style={{textAlign: 'center', marginTop: '10px'}}>6.5/10</h2> 
+                <h3  style={{textAlign: 'center', marginTop: '40px'}}>{movie.Type}</h3>
               </div>
           </div>
           ) : 
