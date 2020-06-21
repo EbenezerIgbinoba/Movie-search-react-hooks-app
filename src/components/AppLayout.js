@@ -5,12 +5,9 @@ import Footer from  "./AppFooter"
 class Layout extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            
-        }
+       
     }
 
- 
     searchEvent(event) {
         this.props.filtertext(event.target.value);
     }

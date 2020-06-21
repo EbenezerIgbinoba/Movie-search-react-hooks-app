@@ -150,13 +150,34 @@ input[type="search"] {
 }
 .movie__overlay_content{
   position: absolute;
-  top:3px;
-  left:3px;
-  width:100%;
-  height:294px;
+  top:4px;
+  left:4px;
+  width:98%;
+  height: 290px;
   background: black;
   opacity: 0.7;
-  /* display: none; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column wrap;
+  padding: 20px;
+}
+.details_button__wrapper{
+  top: 70%;
+  left: 20%;
+  position: absolute;
+}
+.button {
+  padding: 10px 10px 10px 10px;
+  background: #6AC045;
+  color: white;
+  border: 1px solid #6AC045;
+  border-radius: 3px;
+  font-size: 20px;
+  cursor: pointer;
+}
+.button {
+
 }
 .movie_wrapper {
   border: 3px solid white;

@@ -42,9 +42,6 @@ const reducer = (state, action) => {
 };
 
 
-
-
-
 const Movies = (props) => {
     const [state, dispatch] = useReducer(reducer, initialState);
     const [filterText, setFilterText] = useState("");
@@ -54,13 +51,11 @@ const Movies = (props) => {
         fetch(MOVIE_API_URL)
             .then(response => response.json())
             .then(jsonResponse => {
-        
             dispatch({
                 type: "SEARCH_MOVIES_SUCCESS",
                 payload: jsonResponse.Search
             });
         });
-        console.log(props.text);
         setFilterText(props.text);
     }, []);
 
@@ -101,7 +96,7 @@ const Movies = (props) => {
                 <div className="errorMessage">{errorMessage}</div>
             ) : (
             filteredList.map((movie, index) => (
-                <Movie key={`${index}-${movie.Title}`} movie={movie} />
+                <Movie key={index} movie={movie} />
             ))
             )}
         </div>
