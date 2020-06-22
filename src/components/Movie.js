@@ -28,7 +28,7 @@ const Movie = (props) => {
           (
             <div className="movie__overlay_content" onClick={() => props.history.push("/movies/details")}>
               <div>
-                <p style={{textAlign: 'center'}}> <i className="fa fa-star" aria-hidden="true" style={{color: '#6AC045', marginRight: '10px', fontSize:'1.15em'}}></i></p>
+                <p style={{textAlign: 'center', marginTop: '20px'}}> <i className="fa fa-star" aria-hidden="true" style={{color: '#6AC045', marginRight: '10px', fontSize:'1.35em'}}></i></p>
                 <h2 style={{textAlign: 'center', marginTop: '10px'}}>6.5/10</h2> 
                 <h3  style={{textAlign: 'center', marginTop: '40px'}}>{props.movie.Type}</h3>
               </div>

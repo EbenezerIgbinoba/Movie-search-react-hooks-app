@@ -6,7 +6,7 @@ const DEFAULT_PLACEHOLDER_IMAGE =
 const MovieDetails = props => {
     return (
         <div style={{
-            backgroundImage: `linear-gradient(rgb(0, 0, 0 , 0.86), rgb(0, 0, 0 , 0.86)), url('https://img.yts.mx/assets/images/movies/onward_2020/background.jpg')`,
+            backgroundImage: `linear-gradient(rgb(47, 47, 47, 0.86), rgb(47, 47, 47, 0.86)), url('https://img.yts.mx/assets/images/movies/onward_2020/background.jpg')`,
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
             backgroundSize: 'cover'
@@ -26,7 +26,7 @@ const MovieDetails = props => {
                     </div>
                     <div className="button_wrapper_movie_details" >
                         <button className="button success">
-                        <i class="fa fa-download mr-2" aria-hidden="true" style={{color: '#428e21'}}></i>Download</button>
+                        <i className="fa fa-download mr-2" aria-hidden="true" style={{color: '#428e21'}}></i>Download</button>
                     </div>
                 </div>
                 <div className="col_div main_content ">
@@ -66,6 +66,15 @@ const MovieDetails = props => {
                             <div className="col-md-4">
                                 <span style={{fontSize:'1.15em', fontWeight: 700}} className="text-white"> 62% - Audience
                                 </span> 
+                            </div>
+                        </div>
+                        <div className="vpn__wrapper mt-3">
+                            <p className="text-white">Please enable your VPN when downloading torrents</p>
+                            <p className="vpn__para">If you torrent without a VPN, your ISP can see that you're torrenting and may throttle your connection and get fined by legal action!</p>
+                            <div className="mt-2 text-center" >
+                                <button className="button success" style={{fontSize: '15px !important'}}>
+                                    Get Express VPN
+                                </button>
                             </div>
                         </div>
                     </div>

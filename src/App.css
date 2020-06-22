@@ -74,6 +74,7 @@ input[type="search"] {
   padding: 10px;
   color: #919191;
   width: 250px;
+  height: 35px;
 }
 .search_wrapper ::placeholder {
   color: #919191;
@@ -181,7 +182,7 @@ input[type="search"] {
   border: 4px solid #6AC045 !important;
 }
 .button {
-  padding: 10px 10px 10px 10px;
+  padding: 5px 12px 5px 12px;
   background: #6AC045;
   color: white;
   border: 1px solid #6AC045;
@@ -284,13 +285,28 @@ input[type="submit"]:hover {
 .movieDetailWrapper .small{
   flex: 0 0 25%;
 }
+.vpn__wrapper {
+  width: 100%;
+  margin: 0 auto;
+  border: 1px solid #75C74E;
+  background: #000000;
+  padding: 10px 12px;
+  border-radius: 4px;
+}
+.vpn__para {
+  color: #ABCC06;
+  text-align: justify;
+  margin-top: 10px;
+  font-size: 13px;
+  line-height: 20px;
+}
 .button_wrapper_movie_details{
   margin: 0 auto;
   width: 90%;
 }
 .button_wrapper_movie_details button {
   width: 100%;
-  margin-top: 20px;
+  margin-top: 10px;
   cursor: pointer
 }
 .details_main_content_wrapper {
