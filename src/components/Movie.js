@@ -46,9 +46,9 @@ const Movie = (props) => {
         }
          
       </div>
-        <h5 className="movie__title_tag">{props.movie.Title} <br />
+        <h6 className="movie__title_tag">{props.movie.Title} <br />
           <span style={{color: "grey", fontSize: '16px', textAlign:'left'}}>({props.movie.Year})</span>
-        </h5>
+        </h6>
         
       </div>
     );
