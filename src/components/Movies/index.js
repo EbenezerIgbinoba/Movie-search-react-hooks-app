@@ -96,7 +96,7 @@ const Movies = (props) => {
                 <div className="errorMessage">{errorMessage}</div>
             ) : (
             filteredList.map((movie, index) => (
-                <Movie key={index} movie={movie} movieId={index} />
+                <Movie key={index} movie={movie} movieId={index} goToMovieDetail={props.goToMovieDetail} />
             ))
             )}
         </div>

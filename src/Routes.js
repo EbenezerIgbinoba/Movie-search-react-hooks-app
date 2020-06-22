@@ -1,7 +1,8 @@
 import {Route, Switch} from 'react-router-dom';
 import App from './App';
 import React from 'react';
-import Layout from './Components/AppLayout'
+import Layout from './Components/AppLayout';
+import MovieDetails from './Components/MovieDetail';
 
 
 class Routes extends React.Component {
@@ -15,12 +16,16 @@ class Routes extends React.Component {
         this.setState({textToBeFiltered: filtertext});
     }
 
+    goToMovieDetail () {
+        alert();
+        this.props.history.push("/movies/details");
+    }
     render() {
         return (
             <Layout filtertext={(filtertext) => this.filterMovies(filtertext)}>
                 <Switch>
                     <Route exact path="/"  render={(props) => (<App  filerText={this.state.textToBeFiltered} /> )} />
-                    <Route exact path="/movies/details"   />
+                    <Route exact path="/movies/details"  component={MovieDetails} render={(props) => (<MovieDetails {...props} goToMovieDetail={() => this.goToMovieDetail()}  />)}   />
                 </Switch>
             </Layout>
         )
