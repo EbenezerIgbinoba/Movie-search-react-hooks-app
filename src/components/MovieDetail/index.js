@@ -78,8 +78,8 @@ const MovieDetails = props => {
                 </div>
                 <div className="col_div main_content ">
                     <div className="details_main_content_wrapper">
-                        <h2 className="text-white  movieDetailsHeader">Batman v Superman:<br /> Dawn of Justice</h2>
-                        <h2 className="text-white mt-3 h3">2016 <br />Action / Adventure / Fantasy / Sci-Fi</h2><br />
+                        <h2 className="text-white  movieDetailsHeader">{movieDetails.Title}</h2>
+                        <h2 className="text-white mt-3 h3">{movieDetails.Year} <br />{movieDetails.Genre}</h2><br />
                         <em className="italics__text text-white mt-4">Available in: &nbsp; </em> 
                         <button  className="button transparent mr-2" >3D. BluRay</button>
                         <button  className="button transparent mr-2" >720p.BluRay</button>
@@ -89,7 +89,7 @@ const MovieDetails = props => {
                         <i className="fa fa-download mr-2" aria-hidden="true" style={{color: '#428e21'}}></i>Download Subititles</button><br />
                         <div className="row mt-3">
                             <div className="col-md-2">
-                            <i class="fa fa-heart" aria-hidden="true" style={{color:'#6ac045', width: '75px' }}></i>
+                            <i className="fa fa-heart" aria-hidden="true" style={{color:'#6ac045', width: '75px' }}></i>
 
                             </div>
                             <div className="col-md-4">
