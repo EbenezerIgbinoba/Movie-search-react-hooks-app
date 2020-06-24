@@ -1,11 +1,56 @@
 import React from 'react';
 import  {useEffect} from 'react';
-import {useState} from 'react';
+import {useState, useReducer} from 'react';
+// import config_options from '../../config';
 
 const DEFAULT_PLACEHOLDER_IMAGE =
   "https://m.media-amazon.com/images/M/MV5BMTczNTI2ODUwOF5BMl5BanBnXkFtZTcwMTU0NTIzMw@@._V1_SX300.jpg";
 
+let initialState = {
+    movieDetails:  {},
+    loading : false
+}
+const reducer = (state, action) => {
+    switch(action.type) {
+        case("Loading"):
+            return {
+                ...state,
+                loading: true
+            }
+        case('Not Laoding'):
+            return {
+                ...state,
+                loading : false
+            }
+        case('Fetched_Movies'):
+            return {
+                ...state,
+                movieDetails: action.payload
+            }
+    }
+}
+
 const MovieDetails = props => {
+    // const [movieDetails, setMovieDetails] = useState({});
+
+    const [state, dispatch] = useReducer(reducer, initialState);
+
+    useEffect(() => {
+    fetch(`http://www.omdbapi.com/?apikey=4a3b711b&i=${props.match.params.id}`) 
+            .then(response => {
+              return response.json();
+            })
+            .then(jsonResponse => {
+              dispatch({
+                  type: "Fetched_Movies",
+                  payload: jsonResponse
+              });
+        });
+    }, []);
+
+    const {movieDetails, loading} = state; 
+
+    console.log(movieDetails);
     return (
         <div style={{
             backgroundImage: `linear-gradient(rgb(47, 47, 47, 0.86), rgb(47, 47, 47, 0.86)), url('https://img.yts.mx/assets/images/movies/onward_2020/background.jpg')`,
@@ -21,7 +66,7 @@ const MovieDetails = props => {
                             <img
                                 width="200"
                                 alt={`The movie titled: 2008`}
-                                src={DEFAULT_PLACEHOLDER_IMAGE}
+                                src={movieDetails.Poster}
                                 style={{height: '99.5%'}}
                             />
                         </div>
@@ -41,7 +86,7 @@ const MovieDetails = props => {
                         <button  className="button transparent mr-2" >1080p.BluRay</button>
                         <button  className="button transparent" >2160p.BluRay</button> <br />
                         <button className="button transparent mt-3">
-                        <i class="fa fa-download mr-2" aria-hidden="true" style={{color: '#428e21'}}></i>Download Subititles</button><br />
+                        <i className="fa fa-download mr-2" aria-hidden="true" style={{color: '#428e21'}}></i>Download Subititles</button><br />
                         <div className="row mt-3">
                             <div className="col-md-2">
                             <i class="fa fa-heart" aria-hidden="true" style={{color:'#6ac045', width: '75px' }}></i>
@@ -66,7 +111,7 @@ const MovieDetails = props => {
 
                             </div>
                             <div className="col-md-4">
-                                <span style={{fontSize:'1.15em', fontWeight: 700}} className="text-white"> 62% - Audience
+                                <span style={{fontSize:'1.15em', fontWeight: 700}} className="text-white">{movieDetails.imdbRating} - IMDB
                                 </span> 
                             </div>
                         </div>
