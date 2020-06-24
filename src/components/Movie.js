@@ -8,9 +8,6 @@ const DEFAULT_PLACEHOLDER_IMAGE =
 
 
 const Movie = (props) => {
-
-  console.log(props);
-
   const [onHover , setHoverState] = useState({});
 
   let classList = 'movie_wrapper';
@@ -26,7 +23,7 @@ const Movie = (props) => {
           />
          {onHover.state ? 
           (
-            <div className="movie__overlay_content" onClick={() => props.history.push("/movies/details")}>
+            <div className="movie__overlay_content" onClick={() => props.history.push(`/movies/details/${props.movie.imdbID}`)}>
               <div>
                 <p style={{textAlign: 'center', marginTop: '20px'}}> <i className="fa fa-star" aria-hidden="true" style={{color: '#6AC045', marginRight: '10px', fontSize:'1.35em'}}></i></p>
                 <h2 style={{textAlign: 'center', marginTop: '10px'}}>6.5/10</h2> 
@@ -39,7 +36,7 @@ const Movie = (props) => {
         {onHover.state ? 
           (
             <div className="details_button__wrapper">
-              <button href="https://yts.mx/" className="button success" onClick={() => props.history.push("/movies/details")}>View Details</button>
+              <button href="https://yts.mx/" className="button success" onClick={() => props.history.push(`/movies/details/${props.movie.imdbID}`)}>View Details</button>
             </div>
           )
           : null

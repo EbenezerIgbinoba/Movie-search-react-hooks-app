@@ -25,7 +25,7 @@ class Routes extends React.Component {
             <Layout filtertext={(filtertext) => this.filterMovies(filtertext)}>
                 <Switch>
                     <Route exact path="/"  render={(props) => (<App  filerText={this.state.textToBeFiltered} /> )} />
-                    <Route exact path="/movies/details"  component={MovieDetails} render={(props) => (<MovieDetails {...props} goToMovieDetail={() => this.goToMovieDetail()}  />)}   />
+                    <Route exact path="/movies/details/:id"  component={MovieDetails} render={(props) => (<MovieDetails {...props} goToMovieDetail={() => this.goToMovieDetail()}  />)}   />
                 </Switch>
             </Layout>
         )

@@ -3,7 +3,7 @@ import Movie from "../Movie";
 
 
 
-const MOVIE_API_URL = "https://www.omdbapi.com/?s=man&apikey=4a3b711b";
+const MOVIE_API_URL = "https://www.omdbapi.com/?s=man&apikey=4a3b711b&page=3";
 const IMDB_API = "https://imdb8.p.rapidapi.com/title/get-top-stripe?currentCountry=US&purchaseCountry=US&tconst=tt0944947";
 
 
@@ -49,12 +49,15 @@ const Movies = (props) => {
     
     useEffect(() => {
         fetch(MOVIE_API_URL)
-            .then(response => response.json())
+            .then(response => {
+              return response.json();
+            })
             .then(jsonResponse => {
-            dispatch({
-                type: "SEARCH_MOVIES_SUCCESS",
-                payload: jsonResponse.Search
-            });
+              console.log(jsonResponse);
+              dispatch({
+                  type: "SEARCH_MOVIES_SUCCESS",
+                  payload: jsonResponse.Search
+              });
         });
         setFilterText(props.text);
     }, []);
