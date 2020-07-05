@@ -8,7 +8,8 @@ import Paginator from '../utils/paginator';
 
 
 
-const MOVIE_API_URL = "https://www.omdbapi.com/?s=man&apikey=4a3b711b&page=3";
+// const MOVIE_API_URL = "https://www.omdbapi.com/?s=man&apikey=4a3b711b&page=3";
+const MOVIE_API_URL = "https://www.omdbapi.com/?s=man&apikey=4a3b711b";
 // const IMDB_API = "https://imdb8.p.rapidapi.com/title/get-top-stripe?currentCountry=US&purchaseCountry=US&tconst=tt0944947";
 
 
@@ -54,7 +55,7 @@ const Movies = (props) => {
 
     
     useEffect(() => {
-        fetch(MOVIE_API_URL)
+        fetch(`${MOVIE_API_URL}&page=${page}`)
             .then(response => {
               return response.json();
             })
@@ -65,35 +66,13 @@ const Movies = (props) => {
               });
         });
         setFilterText(props.text);
-    }, []);
+    }, [page]);
 
-    const search = searchValue => {
-    	dispatch({
-      	type: "SEARCH_MOVIES_REQUEST"
-    	});
-	
-        fetch(`https://www.omdbapi.com/?s=${searchValue}&apikey=4a3b711b`)
-      	.then(response => response.json())
-      	.then(jsonResponse => {
-        	if (jsonResponse.Response === "True") {
-          	dispatch({
-                type: "SEARCH_MOVIES_SUCCESS",
-                payload: jsonResponse.Search
-          	});
-        	} else {
-          	dispatch({
-                type: "SEARCH_MOVIES_FAILURE",
-                error: jsonResponse.Error
-          	});
-          }
-        });
-        
-        
-	  };
 
     const { movies, errorMessage, loading } = state;
 
     const filteredList = movies.filter((mv) => mv.Title.toLowerCase().includes(filterText.toLowerCase()));
+
  
     const goToNextPage = () => {
       let pageNumber = page;
@@ -103,13 +82,21 @@ const Movies = (props) => {
 
     const goTopreviousPage = () => {
       let pageNumber = page;
-      let newPage = pageNumber - 1
+      let newPage = pageNumber - 1;
+      if(newPage < 1) {
+        newPage = 1
+      }
       setPage(newPage);
     }
 
     return (
         <div>
-          <Paginator currentPage={page} goToNextPage={() => goToNextPage()} goTopreviousPage={() => goTopreviousPage()} />
+          {
+            !loading  ? (
+              <Paginator currentPage={page} goToNextPage={() => goToNextPage()} goTopreviousPage={() => goTopreviousPage()} />
+            ) : 
+            null
+          }
           <div className="movies">  
                 {loading && !errorMessage ? (
                   <div style={{marginTop: '20px'}}>
