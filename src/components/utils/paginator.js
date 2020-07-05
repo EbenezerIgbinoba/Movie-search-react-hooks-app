@@ -4,7 +4,7 @@ const Paginator = (props) => {
     return (
         <div className="paginatorWrapper">
             <div className="paginatorButtonsWrapper">
-                <button className="button success mr-2">Prev</button> <button className="button success">Next</button>
+                <button className={`button success mr-2 ${props.currentPage === 1 ? 'disabled_button' : null}`} onClick={props.goTopreviousPage}>Prev</button> <button className="button success" onClick={props.goToNextPage}>Next</button>
             </div>
             
         </div>
@@ -12,4 +12,4 @@ const Paginator = (props) => {
 }
 
 
-export default Paginator
+export default Paginator;

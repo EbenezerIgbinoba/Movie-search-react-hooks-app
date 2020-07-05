@@ -95,15 +95,21 @@ const Movies = (props) => {
 
     const filteredList = movies.filter((mv) => mv.Title.toLowerCase().includes(filterText.toLowerCase()));
  
-    const nextPage = () => {
-      setPage(page + 1);
-      console.log(page);
+    const goToNextPage = () => {
+      let pageNumber = page;
+      let newPage = pageNumber + 1
+      setPage(newPage);
     } 
 
+    const goTopreviousPage = () => {
+      let pageNumber = page;
+      let newPage = pageNumber - 1
+      setPage(newPage);
+    }
 
     return (
         <div>
-          <Paginator />
+          <Paginator currentPage={page} goToNextPage={() => goToNextPage()} goTopreviousPage={() => goTopreviousPage()} />
           <div className="movies">  
                 {loading && !errorMessage ? (
                   <div style={{marginTop: '20px'}}>

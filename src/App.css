@@ -351,3 +351,9 @@ input[type="submit"]:hover {
    text-align: center;
    margin-top: 30px;
  }
+ .disabled_button {
+  cursor: not-allowed !important;
+  background:lightgray !important;
+  color: #0000004a;
+  border: 1px solid lightgray !important;
+ }
