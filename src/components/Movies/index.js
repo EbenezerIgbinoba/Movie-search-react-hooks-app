@@ -1,10 +1,15 @@
 import React, { useState, useEffect, useReducer } from "react"
 import Movie from "../Movie";
+import CircularProgress from '@material-ui/core/CircularProgress';
+import config_options from '../../config';
+import Paginator from '../utils/paginator';
+
+
 
 
 
 const MOVIE_API_URL = "https://www.omdbapi.com/?s=man&apikey=4a3b711b&page=3";
-const IMDB_API = "https://imdb8.p.rapidapi.com/title/get-top-stripe?currentCountry=US&purchaseCountry=US&tconst=tt0944947";
+// const IMDB_API = "https://imdb8.p.rapidapi.com/title/get-top-stripe?currentCountry=US&purchaseCountry=US&tconst=tt0944947";
 
 
 
@@ -45,6 +50,7 @@ const reducer = (state, action) => {
 const Movies = (props) => {
     const [state, dispatch] = useReducer(reducer, initialState);
     const [filterText, setFilterText] = useState("");
+    const [page, setPage] = useState(1);
 
     
     useEffect(() => {
@@ -53,7 +59,6 @@ const Movies = (props) => {
               return response.json();
             })
             .then(jsonResponse => {
-              console.log(jsonResponse);
               dispatch({
                   type: "SEARCH_MOVIES_SUCCESS",
                   payload: jsonResponse.Search
@@ -89,20 +94,31 @@ const Movies = (props) => {
     const { movies, errorMessage, loading } = state;
 
     const filteredList = movies.filter((mv) => mv.Title.toLowerCase().includes(filterText.toLowerCase()));
+ 
+    const nextPage = () => {
+      setPage(page + 1);
+      console.log(page);
+    } 
 
 
     return (
-        <div className="movies">
-            {loading && !errorMessage ? (
-            <span>loading... </span>
-            ) : errorMessage ? (
-                <div className="errorMessage">{errorMessage}</div>
-            ) : (
-            filteredList.map((movie, index) => (
-                <Movie key={index} movie={movie} movieId={index} goToMovieDetail={props.goToMovieDetail} />
-            ))
-            )}
+        <div>
+          <Paginator />
+          <div className="movies">  
+                {loading && !errorMessage ? (
+                  <div style={{marginTop: '20px'}}>
+                    <CircularProgress />
+                  </div>
+                ) : errorMessage ? (
+                    <div className="errorMessage">{errorMessage}</div>
+                ) : (
+                  filteredList.map((movie, index) => (
+                      <Movie key={index} movie={movie} movieId={index} goToMovieDetail={props.goToMovieDetail} />
+                  ))
+                )}
+          </div>
         </div>
+        
   );
 };
 

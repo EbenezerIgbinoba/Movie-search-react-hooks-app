@@ -17,7 +17,6 @@ class Routes extends React.Component {
     }
 
     goToMovieDetail () {
-        alert();
         this.props.history.push("/movies/details");
     }
     render() {

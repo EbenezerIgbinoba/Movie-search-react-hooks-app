@@ -1,10 +1,10 @@
 import React from 'react';
 import  {useEffect} from 'react';
 import {useState, useReducer} from 'react';
-// import config_options from '../../config';
+import config_options from '../../config';
 
 const DEFAULT_PLACEHOLDER_IMAGE =
-  "https://m.media-amazon.com/images/M/MV5BMTczNTI2ODUwOF5BMl5BanBnXkFtZTcwMTU0NTIzMw@@._V1_SX300.jpg";
+  "https://image.shutterstock.com/image-vector/ui-image-placeholder-wireframes-apps-260nw-1037719204.jpg";
 
 let initialState = {
     movieDetails:  {},
@@ -31,7 +31,6 @@ const reducer = (state, action) => {
 }
 
 const MovieDetails = props => {
-    // const [movieDetails, setMovieDetails] = useState({});
 
     const [state, dispatch] = useReducer(reducer, initialState);
 
@@ -56,7 +55,8 @@ const MovieDetails = props => {
             backgroundImage: `linear-gradient(rgb(47, 47, 47, 0.86), rgb(47, 47, 47, 0.86)), url('https://img.yts.mx/assets/images/movies/onward_2020/background.jpg')`,
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
-            backgroundSize: 'cover'
+            backgroundSize: 'cover',
+            padding: '1px'
         }}>
         <div className="section_block" style={{padding: "48px"}}>
             <div className="movieDetailWrapper">
@@ -66,7 +66,7 @@ const MovieDetails = props => {
                             <img
                                 width="200"
                                 alt={`The movie titled: 2008`}
-                                src={movieDetails.Poster}
+                                src={!movieDetails.Poster ? DEFAULT_PLACEHOLDER_IMAGE  : movieDetails.Poster}
                                 style={{height: '99.5%'}}
                             />
                         </div>
@@ -98,7 +98,7 @@ const MovieDetails = props => {
                         </div>
                         <div className="row mt-3">
                             <div className="col-md-2">
-                            <i class="fa fa-pagelines" aria-hidden="true" style={{color:'#6ac045', width: '75px' }}></i>
+                            <i className="fa fa-pagelines" aria-hidden="true" style={{color:'#6ac045', width: '75px' }}></i>
 
                             </div>
                             <div className="col-md-4">
@@ -107,7 +107,7 @@ const MovieDetails = props => {
                         </div>
                         <div className="row mt-2">
                             <div className="col-md-2">
-                            <i class="fa fa-pagelines" aria-hidden="true" style={{color:'#6ac045', width: '75px' }}></i>
+                            <i className="fa fa-pagelines" aria-hidden="true" style={{color:'#6ac045', width: '75px' }}></i>
 
                             </div>
                             <div className="col-md-4">
