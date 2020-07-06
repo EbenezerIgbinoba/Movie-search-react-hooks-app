@@ -6,7 +6,11 @@ const Modal = ({ modalOpen, hideModal, tab}) => {
     const emailRef = useRef();
     const usernameRef = useRef();
     const passRef = useRef();
-    const [activeTab, activateTab] = useState('login'); 
+    const confPassRef = useRef();
+    const [activeTab, activateTab] = useState(''); 
+    const [password, setPassword] = useState('');
+    const [email, setEmail] = useState('');
+    const [username, setUsername] = useState('');
 
     useEffect(() => {
         activateTab(tab);
@@ -23,13 +27,15 @@ const Modal = ({ modalOpen, hideModal, tab}) => {
         return false;
     }
     const validatePasword = password => {
-        if (password.length > 6) {
+        if (password.length >= 6) {
           return true;
+        }else {
+            return false;
         }
-        return false;
     }
     const validateInput = e => {
         let _errNode = e.target.parentNode.children[1];
+        console.log(validatePasword(e.target.value));
         if(e.target.name === 'email') {
             if(!validateEmail(e.target.value)) {
                 emailRef.current.style.border = '1px solid red';
@@ -37,6 +43,7 @@ const Modal = ({ modalOpen, hideModal, tab}) => {
             }else {
                 emailRef.current.style.border = '1px solid #d2d8d8';
                 _errNode.innerHTML = '';
+                setEmail(e.target.value)
             }
         }
         if(e.target.name === 'username') {
@@ -46,6 +53,7 @@ const Modal = ({ modalOpen, hideModal, tab}) => {
             }else {
                 usernameRef.current.style.border = '1px solid #d2d8d8';
                 _errNode.innerHTML = '';
+                setUsername(e.target.value)
             }
         }
         if(e.target.name === 'password') {
@@ -57,6 +65,19 @@ const Modal = ({ modalOpen, hideModal, tab}) => {
                 _errNode.innerHTML = 'Password must be more than six(6) characters';
             }else {
                 passRef.current.style.border = '1px solid #d2d8d8';
+                _errNode.innerHTML = '';
+                setPassword(e.target.value);
+            }
+        }
+        if(e.target.name === 'confPass'){
+            if(e.target.value === '') {
+                confPassRef.current.style.border = '1px solid red';
+                _errNode.innerHTML = 'Confirm password';
+            }else if(password.length !== e.target.value.length){
+                confPassRef.current.style.border = '1px solid red';
+                _errNode.innerHTML = 'Passwords must match';
+            }else {
+                confPassRef.current.style.border = '1px solid #d2d8d8';
                 _errNode.innerHTML = '';
             }
         }
@@ -71,6 +92,16 @@ const Modal = ({ modalOpen, hideModal, tab}) => {
     const makeActive = (e, type) => {
         activateTab(type);
     }
+
+    const register = e => {
+        e.preventDefault();
+        let data = {
+            username,
+            email,
+            password,
+        }
+        console.log(data);
+    }
    
     return (
         <div className={`modal_wrapper ${modalOpen ? ' display-block' : 'display-none'}}`}>
@@ -83,7 +114,7 @@ const Modal = ({ modalOpen, hideModal, tab}) => {
                         <h4 className={`header_title ${activeTab === 'register' ? 'active_tab_header' : null}`} >Register</h4>
                     </div>
                 </div>
-                <form className="form_wrapper mt-5">
+                <form className="form_wrapper mt-5" onSubmit={(e) => register(e)}>
                     {
                         activeTab === 'login' ? (
                            <div>
@@ -142,12 +173,13 @@ const Modal = ({ modalOpen, hideModal, tab}) => {
                                         <div className="error_div"></div>
                                     </div>
                                 </div>
-                                <div className="input_wrapper mt-4">
+                                <div className="input_wrapper mt-4" ref={confPassRef}>
                                     <div className="input_icon_placeholder">
                                         <i className="fa fa-lock" aria-hidden="true" style={{color: '#eaeaea', fontSize: '20px'}}></i>
                                     </div>
                                     <div className="input_div">
-                                        <input type="password" placeholder="Confirm Password" className="input__container"  />
+                                        <input type="password" placeholder="Confirm Password" name="confPass" className="input__container" onBlur={(e) => validateInput(e)}   />
+                                        <div className="error_div"></div>
                                     </div>
                                 </div>
                                 <div className="text-center mt-3">
@@ -157,7 +189,7 @@ const Modal = ({ modalOpen, hideModal, tab}) => {
                                     </p>
                                 </div>
                                 <div className="mt-4">
-                                    <button className="button success max-width" style={{padding: '10px'}}>
+                                    <button className="button success max-width" style={{padding: '10px'}} onSubmit={(e) => register(e)}>
                                         Register
                                     </button>
                                 </div>
