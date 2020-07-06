@@ -371,11 +371,11 @@ input[type="submit"]:hover {
  }
  .modal_main {
    position: fixed;
-   top:30%;
+   top:50%;
    left: 50%;
    background: white;
    height: auto;
-   transform: translate(-50%,-30%);
+   transform: translate(-50%,-50%);
    width: 600px;
    animation-name: modal_slide;
    animation-duration: .5s;
@@ -390,8 +390,8 @@ input[type="submit"]:hover {
   display: none;
 }
 @keyframes modal_slide {
-  from {transform: translate(-50%,-40%)}
-  to {transform: translate(-50%,-30%)}
+  from {transform: translate(-50%,-60%)}
+  to {transform: translate(-50%,-50%)}
 }
 .tab__menu{
   display: flex;
@@ -443,13 +443,14 @@ input[type="submit"]:hover {
   padding: 15px;
 }
 .input_div {
-  flex: 0 0 80%;
+  flex: 0 0 95%;
 }
 .input__container{
-  width: 100%;
+  width: 95%;
   height: 100%;
   border: none;
   outline: none;
+  border-radius: 5px;
 }
 .terms_text {
   color: #666666;

@@ -8,8 +8,10 @@ const logoURl = "https://yts.mx/assets/images/website/logo-YTS.svg";
 
 const Header = (props) => {
   const [modalOpen, showModal]  = useState(false);
+  const [activeMenu, setActiveMenu] = useState('login')
 
-  const openModal = () => {
+  const openModal = (type) => {
+    setActiveMenu(type)
     showModal(true);
   }
   const hideModal = () => {
@@ -41,13 +43,13 @@ const Header = (props) => {
             <h2 className="">Browse Movies</h2>
           </div>
           <div className="menu_item">
-            <h2 className="" style={{color: 'white'}} onClick={() => openModal()}><span className="account_link">Login</span> | <span className="account_link">Register</span></h2>
+            <h2 className="" style={{color: 'white'}} ><span className="account_link" onClick={() => openModal('login')}>Login</span> | <span className="account_link" onClick={() => openModal('register')}>Register</span></h2>
           </div>
         </div>
       </div>
       {
         modalOpen ? (
-          <LoginRegisterModal modalOpen={modalOpen} hideModal={() => hideModal()}   />
+          <LoginRegisterModal modalOpen={modalOpen} hideModal={() => hideModal()} tab={activeMenu}   />
         ) : null
       }
     </header>

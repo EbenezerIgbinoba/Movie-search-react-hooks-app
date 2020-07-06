@@ -1,11 +1,12 @@
 import React from 'react';
 import {useEffect, useState, useRef} from 'react';
 
-const Modal = ({ modalOpen, hideModal}) => {
+const Modal = ({ modalOpen, hideModal, tab}) => {
     const modal_main_ref = useRef();
     const [activeTab, activateTab] = useState('login'); 
 
     useEffect(() => {
+        activateTab(tab);
         document.addEventListener("mousedown", handleClick); // add when mounted
         return () => {
           document.removeEventListener("mousedown", handleClick); // return function to be called when unmounted
@@ -40,7 +41,7 @@ const Modal = ({ modalOpen, hideModal}) => {
                            <div>
                                 <div className="input_wrapper">
                                     <div className="input_icon_placeholder">
-                                        <i class="fa fa-user" aria-hidden="true" style={{color: '#eaeaea', fontSize: '20px'}}></i>
+                                        <i className="fa fa-user" aria-hidden="true" style={{color: '#eaeaea', fontSize: '20px'}}></i>
                                     </div>
                                     <div className="input_div">
                                         <input type="text" placeholder="Username or Email" className="input__container"  />
@@ -48,7 +49,7 @@ const Modal = ({ modalOpen, hideModal}) => {
                                 </div>
                                 <div className="input_wrapper mt-4">
                                     <div className="input_icon_placeholder">
-                                        <i class="fa fa-lock" aria-hidden="true" style={{color: '#eaeaea', fontSize: '20px'}}></i>
+                                        <i className="fa fa-lock" aria-hidden="true" style={{color: '#eaeaea', fontSize: '20px'}}></i>
                                     </div>
                                     <div className="input_div">
                                         <input type="password" placeholder="Password" className="input__container"  />
@@ -65,7 +66,7 @@ const Modal = ({ modalOpen, hideModal}) => {
                             <div>
                                 <div className="input_wrapper">
                                     <div className="input_icon_placeholder">
-                                        <i class="fa fa-user" aria-hidden="true" style={{color: '#eaeaea', fontSize: '20px'}}></i>
+                                        <i className="fa fa-user" aria-hidden="true" style={{color: '#eaeaea', fontSize: '20px'}}></i>
                                     </div>
                                     <div className="input_div">
                                         <input type="text" placeholder="Username" className="input__container"  />
@@ -73,7 +74,7 @@ const Modal = ({ modalOpen, hideModal}) => {
                                 </div>
                                 <div className="input_wrapper mt-4">
                                     <div className="input_icon_placeholder">
-                                        <i class="fa fa-envelope" aria-hidden="true" style={{color: '#eaeaea', fontSize: '20px'}}></i>
+                                        <i className="fa fa-envelope" aria-hidden="true" style={{color: '#eaeaea', fontSize: '20px'}}></i>
                                     </div>
                                     <div className="input_div">
                                         <input type="email" placeholder="Email" className="input__container"  />
@@ -81,7 +82,7 @@ const Modal = ({ modalOpen, hideModal}) => {
                                 </div>
                                 <div className="input_wrapper mt-4">
                                     <div className="input_icon_placeholder">
-                                        <i class="fa fa-lock" aria-hidden="true" style={{color: '#eaeaea', fontSize: '20px'}}></i>
+                                        <i className="fa fa-lock" aria-hidden="true" style={{color: '#eaeaea', fontSize: '20px'}}></i>
                                     </div>
                                     <div className="input_div">
                                         <input type="password" placeholder="Password" className="input__container"  />
@@ -89,7 +90,7 @@ const Modal = ({ modalOpen, hideModal}) => {
                                 </div>
                                 <div className="input_wrapper mt-4">
                                     <div className="input_icon_placeholder">
-                                        <i class="fa fa-lock" aria-hidden="true" style={{color: '#eaeaea', fontSize: '20px'}}></i>
+                                        <i className="fa fa-lock" aria-hidden="true" style={{color: '#eaeaea', fontSize: '20px'}}></i>
                                     </div>
                                     <div className="input_div">
                                         <input type="password" placeholder="Confirm Password" className="input__container"  />
