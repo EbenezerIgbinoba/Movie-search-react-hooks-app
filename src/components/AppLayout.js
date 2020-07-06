@@ -1,6 +1,8 @@
 import React from 'react';
 import Header from "./AppHeader";
-import Footer from  "./AppFooter"
+import Footer from  "./AppFooter";
+
+
 
 class Layout extends React.Component {
     constructor(props) {
@@ -15,6 +17,7 @@ class Layout extends React.Component {
     render() {
         return (
             <div>
+                
                 <Header inputChange={(event) => this.searchEvent(event)} />
                     {this.props.children}
                 <Footer />
