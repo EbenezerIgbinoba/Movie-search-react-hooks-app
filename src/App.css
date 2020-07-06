@@ -442,12 +442,16 @@ input[type="submit"]:hover {
   display: flex;
   padding: 15px;
 }
+.error_div {
+  color: red;
+  font-size: 12px;
+}
 .input_div {
   flex: 0 0 95%;
 }
 .input__container{
-  width: 95%;
-  height: 100%;
+  width: 92%;
+  height: 95%;
   border: none;
   outline: none;
   border-radius: 5px;
